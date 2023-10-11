@@ -1,4 +1,10 @@
+import { getCurrentWeather } from "./api"
+
 const searchInput = document.querySelector("#search-input")
 const searchBtn = document.querySelector("#search-btn")
 
-searchBtn.addEventListener("click", ()=> console.log("clicked"))
+function searchData(){
+  getCurrentWeather(searchInput.value)
+}
+
+searchBtn.addEventListener("click", searchData)

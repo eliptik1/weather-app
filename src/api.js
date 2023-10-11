@@ -1,8 +1,8 @@
 import { key } from "./api-key"
 
-export async function getCurrentWeather() {
+export async function getCurrentWeather(city) {
   try {
-    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${key}&q=istanbul`, { mode: 'cors' })
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`, { mode: 'cors' })
     const data = await response.json()
     console.log(data)
   }
