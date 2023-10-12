@@ -8,10 +8,11 @@ export async function getCoordinates(city) {
     const cityName = data.name
     const regionName = new Intl.DisplayNames(['en'], { type: 'region' }); //Convert international region codes to English country names
     const country = regionName.of(data.sys.country)
-    getWeatherData(coordinates, cityName, country)
+    const weatherData = await getWeatherData(coordinates, cityName, country)
+    return weatherData
   }
   catch (err) {
-    console.log("ERROR:", err)
+    throw err
   }
 }
 
@@ -32,8 +33,7 @@ async function getWeatherData(coord, city, country) {
       tempMax: data.daily[0].temp.max,
       uv: data.current.uvi
     }
-    console.log(weatherData)
-    
+    return weatherData
   }
   catch (err) {
     console.log("ERROR-2:", err)

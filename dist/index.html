@@ -14,6 +14,23 @@
         <input id="search-input" type="text" class="border-blue-950 border-2 bg-slate-300 p-1 text-lg">
         <button id="search-btn" class="bg-slate-200 text-lg p-1 hover:bg-slate-400 transition-colors">Search</button>
     </nav>
+    <main class="w-1/2">
+        <div id="card-today" class="bg-blue-200 p-4 flex flex-col items-center">
+            <div id="city-info" class="flex flex-col items-center">
+                <p id="city-name"></p>
+                <p id="weather-description"></p>
+            </div>
+            <div id="current-temp"></div>
+            <div id="current-temp-range"></div>
+        </div>
+        <div id="card-details" class="bg-blue-200 p-4 flex flex-col items-center mt-3">
+            <div>Feels like <span id="feels-like"></span></div>
+            <div>Humidity: <span id="humidity"></span></div>
+            <div>Rain probability: <span id="rain"></span></div>
+            <div>Wind speed: <span id="wind"></span></div>
+            <div>UV index: <span id="uvi"></span></div>
+        </div>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>
