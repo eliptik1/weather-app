@@ -1,5 +1,5 @@
 import "./style.css"
 import "./dom"
-import { getCurrentWeather } from "./api"
+import { getCoordinates } from "./api"
 
-getCurrentWeather("istanbul")
+getCoordinates("istanbul")
