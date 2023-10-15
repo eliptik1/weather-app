@@ -17,24 +17,27 @@ const rain = document.querySelector("#rain")
 const wind = document.querySelector("#wind")
 const uvi = document.querySelector("#uvi")
 
+const weeklyContainer = document.querySelector("#weekly-container")
 
 export async function fetchData(searchValue = "istanbul") {
   if(searchValue.replace(/\s+/g, "") == "") return
   searchInput.value = ""
   try {
     const result = await getCoordinates(searchValue)
+    const todayData = result.todayData
+    const weeklyData = result.weeklyData
     errorMessage.classList.add("hidden")
 
-    cityName.textContent = `${result.city} - ${result.country}`
-    weatherDesc.textContent = result.desc
-    currentTemp.textContent = `${result.temp.toFixed(1)} °C`
-    currentTempRange.textContent = `${result.tempMin.toFixed(1)} °C / ${result.tempMax.toFixed(1)} °C`
+    cityName.textContent = `${todayData.city} - ${todayData.country}`
+    weatherDesc.textContent = todayData.desc
+    currentTemp.textContent = `${todayData.temp.toFixed(1)} °C`
+    currentTempRange.textContent = `${todayData.tempMin.toFixed(1)} °C / ${todayData.tempMax.toFixed(1)} °C`
 
-    feelsLike.textContent = `${result.feelsLike.toFixed()} °C`
-    humidity.textContent = `${result.humidity}%`
-    rain.textContent = `${(result.rain * 100).toFixed()}%`
-    wind.textContent = `${result.wind.toFixed()} m/s`
-    uvi.textContent = `${result.uv}`
+    feelsLike.textContent = `${todayData.feelsLike.toFixed(1)} °C`
+    humidity.textContent = `${todayData.humidity}%`
+    rain.textContent = `${(todayData.rain * 100).toFixed()}%`
+    wind.textContent = `${todayData.wind.toFixed()} m/s`
+    uvi.textContent = `${todayData.uv}`
 
   } catch (err) {
     console.log("ErrorGetCoordinates", err)

@@ -20,7 +20,7 @@ async function getWeatherData(coord, city, country) {
   try {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=alerts,minutely&units=metric&appid=${key}`, { mode: 'cors' })
     const data = await response.json()
-    const weatherData = {
+    const todayData = {
       city: city,
       country: country,
       desc: data.current.weather[0].description,
@@ -33,7 +33,23 @@ async function getWeatherData(coord, city, country) {
       tempMax: data.daily[0].temp.max,
       uv: data.current.uvi
     }
-    return weatherData
+
+    const weeklyData = {
+      day:[],
+      desc:[],
+      tempDay:[],
+      tempNight:[]
+    }
+
+    for (let index = 1; index <= 5; index++) {
+      const day = data.daily[index];
+      weeklyData.day.push(day.dt)
+      weeklyData.desc.push(day.weather[0].description) //could be also day.weather.main 
+      weeklyData.tempDay.push(day.temp.day)
+      weeklyData.tempNight.push(day.temp.night)
+    }
+
+    return { todayData, weeklyData }
   }
   catch (err) {
     console.log("ERROR-2:", err)
