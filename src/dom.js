@@ -20,7 +20,7 @@ const uvi = document.querySelector("#uvi")
 const weeklyContainer = document.querySelector("#weekly-container")
 
 export async function fetchData(searchValue = "istanbul") {
-  if(searchValue.replace(/\s+/g, "") == "") return
+  if (searchValue.replace(/\s+/g, "") == "") return
   searchInput.value = ""
   try {
     const result = await getCoordinates(searchValue)
@@ -28,6 +28,7 @@ export async function fetchData(searchValue = "istanbul") {
     const weeklyData = result.weeklyData
     errorMessage.classList.add("hidden")
     displayToday(todayData)
+    displayWeek(weeklyData)
   } catch (err) {
     console.log("ErrorGetCoordinates", err)
     errorMessage.classList.remove("hidden")
@@ -35,7 +36,7 @@ export async function fetchData(searchValue = "istanbul") {
   }
 }
 
-function displayToday(data){
+function displayToday(data) {
   cityName.textContent = `${data.city} - ${data.country}`
   weatherDesc.textContent = data.desc
   currentTemp.textContent = `${data.temp.toFixed(1)} °C`
@@ -46,6 +47,22 @@ function displayToday(data){
   rain.textContent = `${(data.rain * 100).toFixed()}%`
   wind.textContent = `${data.wind.toFixed()} m/s`
   uvi.textContent = `${data.uv}`
+}
+
+function displayWeek(data) {
+  console.log(data)
+  weeklyContainer.innerHTML = ""
+  for (let i = 0; i < 5; i++) {
+    weeklyContainer.innerHTML += `
+      <li class="bg-green-200 flex flex-col items-center border-2 border-green-500"> 
+        <span class="day">${data.day[i]}</span>
+        <p class="desc">${data.desc[i]}</p>
+        <div class="temp flex gap-2 mt-auto">
+            <p class="temp-day">${data.tempDay[i]}</p>
+            <p class="temp-night">${data.tempNight[i]}</p>
+        </div>
+      </li>`
+  }
 }
 
 searchBtn.addEventListener("click", () => {
