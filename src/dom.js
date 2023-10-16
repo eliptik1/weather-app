@@ -27,23 +27,25 @@ export async function fetchData(searchValue = "istanbul") {
     const todayData = result.todayData
     const weeklyData = result.weeklyData
     errorMessage.classList.add("hidden")
-
-    cityName.textContent = `${todayData.city} - ${todayData.country}`
-    weatherDesc.textContent = todayData.desc
-    currentTemp.textContent = `${todayData.temp.toFixed(1)} °C`
-    currentTempRange.textContent = `${todayData.tempMin.toFixed(1)} °C / ${todayData.tempMax.toFixed(1)} °C`
-
-    feelsLike.textContent = `${todayData.feelsLike.toFixed(1)} °C`
-    humidity.textContent = `${todayData.humidity}%`
-    rain.textContent = `${(todayData.rain * 100).toFixed()}%`
-    wind.textContent = `${todayData.wind.toFixed()} m/s`
-    uvi.textContent = `${todayData.uv}`
-
+    displayToday(todayData)
   } catch (err) {
     console.log("ErrorGetCoordinates", err)
     errorMessage.classList.remove("hidden")
     errorMessage.textContent = `City ${searchValue} not found`
   }
+}
+
+function displayToday(data){
+  cityName.textContent = `${data.city} - ${data.country}`
+  weatherDesc.textContent = data.desc
+  currentTemp.textContent = `${data.temp.toFixed(1)} °C`
+  currentTempRange.textContent = `${data.tempMin.toFixed(1)} °C / ${data.tempMax.toFixed(1)} °C`
+
+  feelsLike.textContent = `${data.feelsLike.toFixed(1)} °C`
+  humidity.textContent = `${data.humidity}%`
+  rain.textContent = `${(data.rain * 100).toFixed()}%`
+  wind.textContent = `${data.wind.toFixed()} m/s`
+  uvi.textContent = `${data.uv}`
 }
 
 searchBtn.addEventListener("click", () => {
