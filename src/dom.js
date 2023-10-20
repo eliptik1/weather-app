@@ -1,4 +1,5 @@
 import { getCoordinates } from "./api"
+import format from "date-fns/format"
 
 const searchInput = document.querySelector("#search-input")
 const searchBtn = document.querySelector("#search-btn")
@@ -50,16 +51,16 @@ function displayToday(data) {
 }
 
 function displayWeek(data) {
-  console.log(data)
   weeklyContainer.innerHTML = ""
   for (let i = 0; i < 5; i++) {
+    console.log()
     weeklyContainer.innerHTML += `
-      <li class="bg-green-200 flex flex-col items-center border-2 border-green-500"> 
-        <span class="day">${data.day[i]}</span>
+      <li class="bg-green-200 flex flex-col items-center border-2 border-green-500 p-4"> 
+        <span class="day">${format(new Date(data.day[i]*1000), 'EEEE')}</span>
         <p class="desc">${data.desc[i]}</p>
-        <div class="temp flex gap-2 mt-auto">
-            <p class="temp-day">${data.tempDay[i]}</p>
-            <p class="temp-night">${data.tempNight[i]}</p>
+        <div class="temp w-full flex justify-between mt-auto">
+            <div class="temp-day">${data.tempDay[i].toFixed()}</div>
+            <div class="temp-night">${data.tempNight[i].toFixed()}</div>
         </div>
       </li>`
   }
