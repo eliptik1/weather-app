@@ -1,5 +1,4 @@
 import { getCoordinates } from "./api"
-import format from "date-fns/format"
 
 const searchInput = document.querySelector("#search-input")
 const searchBtn = document.querySelector("#search-btn")
@@ -8,6 +7,8 @@ const errorMessage = document.querySelector("#error-message")
 
 const cardToday = document.querySelector("#card-today")
 const cityName = document.querySelector("#city-name")
+const localDate = document.querySelector("#local-date")
+const localTime = document.querySelector("#local-time")
 const currentTemp = document.querySelector("#current-temp")
 const currentTempRange = document.querySelector("#current-temp-range")
 const weatherDesc = document.querySelector("#weather-description")
@@ -39,6 +40,8 @@ export async function fetchData(searchValue = "istanbul") {
 
 function displayToday(data) {
   cityName.textContent = `${data.city} - ${data.country}`
+  localDate.textContent = `${data.localDate}`
+  localTime.textContent = `${data.localTime}`
   weatherDesc.textContent = data.desc
   currentTemp.textContent = `${data.temp.toFixed(1)} °C`
   currentTempRange.textContent = `${data.tempMin.toFixed(1)} °C / ${data.tempMax.toFixed(1)} °C`
@@ -53,10 +56,9 @@ function displayToday(data) {
 function displayWeek(data) {
   weeklyContainer.innerHTML = ""
   for (let i = 0; i < 5; i++) {
-    console.log()
     weeklyContainer.innerHTML += `
       <li class="bg-green-200 flex flex-col items-center border-2 border-green-500 p-4"> 
-        <span class="day">${format(new Date(data.day[i]*1000), 'EEEE')}</span>
+        <span class="day">${data.day[i]}</span>
         <p class="desc">${data.desc[i]}</p>
         <div class="temp w-full flex justify-between mt-auto">
             <div class="temp-day">${data.tempDay[i].toFixed()}</div>

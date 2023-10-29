@@ -1,4 +1,5 @@
 import { key } from "./api-key"
+import { addSeconds, format } from "date-fns"
 
 export async function getCoordinates(city) {
   try {
@@ -20,9 +21,17 @@ async function getWeatherData(coord, city, country) {
   try {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=alerts,minutely&units=metric&appid=${key}`, { mode: 'cors' })
     const data = await response.json()
+
+    const currentDate = new Date()
+    const timeZoneOffset = data.timezone_offset
+    const localOffset = currentDate.getTimezoneOffset()*60; //UTC Timezone offset in seconds
+    const timeDifference = timeZoneOffset + localOffset
+    const localTime = addSeconds(currentDate, timeDifference)
     const todayData = {
       city: city,
       country: country,
+      localDate: format(localTime, 'EEEE, d MMMM yyyy'),
+      localTime: format(localTime, 'HH:mm'),
       desc: data.current.weather[0].description,
       temp: data.current.temp,
       feelsLike: data.current.feels_like,
@@ -43,7 +52,7 @@ async function getWeatherData(coord, city, country) {
 
     for (let index = 1; index <= 5; index++) {
       const day = data.daily[index];
-      weeklyData.day.push(day.dt)
+      weeklyData.day.push(format(day.dt*1000, 'EEEE'))
       weeklyData.desc.push(day.weather[0].description) //could be also day.weather.main 
       weeklyData.tempDay.push(day.temp.day)
       weeklyData.tempNight.push(day.temp.night)
