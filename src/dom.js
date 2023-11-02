@@ -12,6 +12,7 @@ const localTime = document.querySelector("#local-time")
 const currentTemp = document.querySelector("#current-temp")
 const currentTempRange = document.querySelector("#current-temp-range")
 const weatherDesc = document.querySelector("#weather-description")
+const iconToday = document.querySelector("#icon-today")
 
 const feelsLike = document.querySelector("#feels-like")
 const humidity = document.querySelector("#humidity")
@@ -47,9 +48,10 @@ export async function fetchData(searchValue = "istanbul") {
 
 function displayToday(data) {
   cityName.textContent = `${data.city} - ${data.country}`
-  localDate.textContent = `${data.localDate}`
-  localTime.textContent = `${data.localTime}`
+  localDate.textContent = data.localDate
+  localTime.textContent = data.localTime
   weatherDesc.textContent = data.desc
+  iconToday.innerHTML = `<img src="../src/icons/${data.iconId}.svg" alt="${data.desc}"></img>`
   currentTemp.textContent = `${data.temp.toFixed(1)} °C`
   currentTempRange.textContent = `${data.tempMin.toFixed(1)} °C / ${data.tempMax.toFixed(1)} °C`
 
@@ -67,6 +69,7 @@ function displayWeek(data) {
       <li class="bg-green-200 flex flex-col items-center border-2 border-green-500 p-4"> 
         <span class="day">${data.day[i]}</span>
         <p class="desc">${data.desc[i]}</p>
+        <img src="../src/icons/${data.iconId[i]}.svg" alt="${data.desc[i]}"></img>
         <div class="temp w-full flex justify-between mt-auto">
             <div class="temp-day">${data.tempDay[i].toFixed()}</div>
             <div class="temp-night">${data.tempNight[i].toFixed()}</div>

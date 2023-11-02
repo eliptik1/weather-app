@@ -33,6 +33,7 @@ async function getWeatherData(coord, city, country) {
       localDate: format(localTime, 'EEEE, d MMMM yyyy'),
       localTime: format(localTime, 'HH:mm'),
       desc: data.current.weather[0].description,
+      iconId: data.current.weather[0].icon,
       temp: data.current.temp,
       feelsLike: data.current.feels_like,
       humidity: data.current.humidity,
@@ -46,6 +47,7 @@ async function getWeatherData(coord, city, country) {
     const weeklyData = {
       day:[],
       desc:[],
+      iconId:[],
       tempDay:[],
       tempNight:[]
     }
@@ -54,6 +56,7 @@ async function getWeatherData(coord, city, country) {
       const day = data.daily[index];
       weeklyData.day.push(format(day.dt*1000, 'EEEE'))
       weeklyData.desc.push(day.weather[0].description) //could be also day.weather.main 
+      weeklyData.iconId.push(day.weather[0].icon)
       weeklyData.tempDay.push(day.temp.day)
       weeklyData.tempNight.push(day.temp.night)
     }
