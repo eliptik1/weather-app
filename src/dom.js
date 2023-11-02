@@ -20,21 +20,28 @@ const wind = document.querySelector("#wind")
 const uvi = document.querySelector("#uvi")
 
 const weeklyContainer = document.querySelector("#weekly-container")
+const main = document.querySelector("main")
+const loader = document.querySelector("#loader")
 
 export async function fetchData(searchValue = "istanbul") {
   if (searchValue.replace(/\s+/g, "") == "") return
   searchInput.value = ""
+  main.classList.add("hidden")
+  loader.style.display = "block";
   try {
     const result = await getCoordinates(searchValue)
     const todayData = result.todayData
     const weeklyData = result.weeklyData
     errorMessage.classList.add("hidden")
+    main.classList.remove("hidden")
+    loader.style.display = "none";
     displayToday(todayData)
     displayWeek(weeklyData)
   } catch (err) {
     console.log("ErrorGetCoordinates", err)
     errorMessage.classList.remove("hidden")
     errorMessage.textContent = `City ${searchValue} not found`
+    loader.style.display = "none";
   }
 }
 
