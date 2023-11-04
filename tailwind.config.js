@@ -6,7 +6,11 @@ module.exports = {
     './src/*.js'
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "test": "#f2b452" //bg-test for example
+      },
+    },
   },
   plugins: [],
 }

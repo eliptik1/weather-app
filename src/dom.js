@@ -51,11 +51,11 @@ function displayToday(data) {
   localDate.textContent = data.localDate
   localTime.textContent = data.localTime
   weatherDesc.textContent = data.desc
-  iconToday.innerHTML = `<img src="../src/icons/${data.iconId}.svg" alt="${data.desc}"></img>`
-  currentTemp.textContent = `${data.temp.toFixed(1)} °C`
-  currentTempRange.textContent = `${data.tempMin.toFixed(1)} °C / ${data.tempMax.toFixed(1)} °C`
+  iconToday.innerHTML = `<img class="${getShadow(data.iconId)}" src="../src/icons/${data.iconId}.svg" alt="${data.desc}"></img>`
+  currentTemp.textContent = `${data.temp.toFixed(1)}°c`
+  currentTempRange.textContent = `${data.tempMin.toFixed(1)}°c / ${data.tempMax.toFixed(1)}°c`
 
-  feelsLike.textContent = `${data.feelsLike.toFixed(1)} °C`
+  feelsLike.textContent = `${data.feelsLike.toFixed(1)}°c`
   humidity.textContent = `${data.humidity}%`
   rain.textContent = `${(data.rain * 100).toFixed()}%`
   wind.textContent = `${data.wind.toFixed()} m/s`
@@ -66,16 +66,25 @@ function displayWeek(data) {
   weeklyContainer.innerHTML = ""
   for (let i = 0; i < 5; i++) {
     weeklyContainer.innerHTML += `
-      <li class="bg-green-200 flex flex-col items-center border-2 border-green-500 p-4"> 
+      <li class="bg-green-200 flex flex-1 flex-col items-center border-2 border-green-500 p-4"> 
         <span class="day">${data.day[i]}</span>
-        <p class="desc">${data.desc[i]}</p>
-        <img src="../src/icons/${data.iconId[i]}.svg" alt="${data.desc[i]}"></img>
-        <div class="temp w-full flex justify-between mt-auto">
-            <div class="temp-day">${data.tempDay[i].toFixed()}</div>
-            <div class="temp-night">${data.tempNight[i].toFixed()}</div>
+        <p class="desc text-center">${data.desc[i]}</p>
+        <img class="${getShadow(data.iconId[i])} mt-auto" src="../src/icons/${data.iconId[i]}.svg" alt="${data.desc[i]}"></img>
+        <div class="temp w-full flex justify-center">
+            <div class="temp-day">${data.tempDay[i].toFixed()}° / ${data.tempNight[i].toFixed()}°</div>
         </div>
       </li>`
   }
+}
+
+function getShadow(id){
+  if (id == "01d"){
+    return "drop-shadow-[0_0_15px_#ffd400]" //clear day
+  } else if (id.includes("50")){
+    return "drop-shadow-[0_0_15px_#000000db]" //foggy weather
+  } else if (id.includes("d")){
+    return "drop-shadow-[0_0_15px_#738c95c2]" //night
+  } else return "drop-shadow-[0_0_15px_#002eff94]"
 }
 
 searchBtn.addEventListener("click", () => {
