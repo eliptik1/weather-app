@@ -60,6 +60,7 @@ function displayToday(data) {
   rain.textContent = `${(data.rain * 100).toFixed()}%`
   wind.textContent = `${data.wind.toFixed()} m/s`
   uvi.textContent = `${data.uv}`
+  uvi.className = `${getUviColor(data.uv)} rounded-full text-white text-xl w-9 h-9 text-center flex justify-center items-center`
 }
 
 function displayWeek(data) {
@@ -85,6 +86,22 @@ function getShadow(id){
   } else if (id.includes("d")){
     return "drop-shadow-[0_0_15px_#738c95c2]" //night
   } else return "drop-shadow-[0_0_15px_#002eff94]"
+}
+
+function getUviColor(uvi){
+  let color = ""
+    if(uvi <=2 ){
+      color = "bg-[#91c700]"
+    } else if(uvi <= 5){
+      color = "bg-[#ffb800]"
+    } else if(uvi <= 7){
+      color = "bg-[#ff8d00]"
+    } else if(uvi <= 10){
+      color = "bg-[#ff3c00]"
+    } else {
+      color = "bg-[#9936d4]"
+    }
+  return color
 }
 
 searchBtn.addEventListener("click", () => {

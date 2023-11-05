@@ -41,7 +41,7 @@ async function getWeatherData(coord, city, country) {
       wind: data.current.wind_speed,
       tempMin: data.daily[0].temp.min,
       tempMax: data.daily[0].temp.max,
-      uv: data.current.uvi
+      uv: Math.round(data.current.uvi)
     }
 
     const weeklyData = {
