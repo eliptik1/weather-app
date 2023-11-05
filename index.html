@@ -41,14 +41,14 @@
     </nav>
     <div id="error-message" class="px-3 py-1 bg-red-200 hidden"></div>
     <main class="hidden m-6">
-        <div id="card-main" class="p-4 flex flex-col justify-center gap-4">
-            <div id="card-today" class="bg-blue-100 p-4 flex flex-col items-center">
+        <div id="card-main" class="w-fit p-4 grid grid-cols-2 gap-8 min-w-max">
+            <div id="card-today" class="bg-blue-100 py-6 px-4 flex flex-col items-center">
                 <div id="city-info" class="flex flex-col items-center">
-                    <p id="city-name" class="text-3xl"></p>
+                    <p id="city-name" class="text-3xl max-w-[350px] text-center"></p>
                     <p id="local-date"></p>
                     <p id="local-time"></p>
                 </div>
-                <div id="middle" class="flex items-center gap-2">
+                <div id="middle" class="flex items-center gap-2 mt-auto">
                     <div id="icon-today" class="w-32"></div>
                     <div id="temperature" class="flex flex-col items-center m-4">
                         <div id="current-temp" class="text-5xl"></div>
@@ -57,15 +57,15 @@
                 </div>
                 <p id="weather-description"></p>
             </div>
-            <div id="card-details" class="bg-blue-200 p-4 flex flex-col items-center">
-                <div>Feels like <span id="feels-like"></span></div>
-                <div>Humidity: <span id="humidity"></span></div>
-                <div>Rain probability: <span id="rain"></span></div>
-                <div>Wind speed: <span id="wind"></span></div>
-                <div>UV index: <span id="uvi"></span></div>
-            </div>
+            <ul id="card-details" class="bg-blue-200 px-4 py-6 flex flex-col items-start justify-between">
+                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/thermometer.svg"><p>Feels like:</p></div><span id="feels-like"></span></li>
+                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/raindrop.svg"><p>Humidity:</p></div><span id="humidity"></span></li>
+                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/rain.svg"><p>Rain probability:</p></div><span id="rain"></span></li>
+                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/wind.svg"><p>Wind speed:</p></div><span id="wind"></span></li>
+                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/uv-index.svg"><p>UV index:</p></div><span id="uvi"></span></li>
+            </ul>
+            <ul id="weekly-container" class="col-span-2 flex justify-center gap-2"></ul>
         </div>
-        <ul id="weekly-container" class="flex justify-center gap-2"></ul>
     </main>
     <script src="main.js"></script>
 </body>
