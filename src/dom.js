@@ -67,12 +67,12 @@ function displayWeek(data) {
   weeklyContainer.innerHTML = ""
   for (let i = 0; i < 5; i++) {
     weeklyContainer.innerHTML += `
-      <li class="bg-green-200 flex flex-1 flex-col items-center border-2 border-green-500 p-4"> 
-        <span class="day">${data.day[i]}</span>
-        <p class="desc text-center">${data.desc[i]}</p>
+      <li class="bg-green-200 flex flex-1 flex-col items-center p-4 rounded-2xl my-shadow w-36"> 
+        <span class="day font-semibold">${data.day[i]}</span>
+        <p class="text-center capitalize">${data.desc[i]}</p>
         <img class="${getShadow(data.iconId[i])} mt-auto" src="../src/icons/${data.iconId[i]}.svg" alt="${data.desc[i]}"></img>
         <div class="temp w-full flex justify-center">
-            <div class="temp-day">${data.tempDay[i].toFixed()}° / ${data.tempNight[i].toFixed()}°</div>
+            <div class="temp-day font-semibold">${data.tempDay[i].toFixed()}°</div> &nbsp <span>/&nbsp${data.tempNight[i].toFixed()}°</span>
         </div>
       </li>`
   }

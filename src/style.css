@@ -6,11 +6,16 @@
     .test {
         @apply flex gap-2 items-center mt-3
     }
+
+    .my-shadow {
+      box-shadow: rgba(60,64,67,.3) 0px 4px 12px 0px, rgba(60,64,67,.15) 0px 2px 8px 0px
+    }
 }
 
 @layer base {
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
     html {
       font-family: "Poppins", sans-serif;
     }
   }
+
