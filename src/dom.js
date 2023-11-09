@@ -51,7 +51,7 @@ function displayToday(data) {
   localDate.textContent = data.localDate
   localTime.textContent = data.localTime
   weatherDesc.textContent = data.desc
-  iconToday.innerHTML = `<img class="${getShadow(data.iconId)}" src="../src/icons/${data.iconId}.svg" alt="${data.desc}"></img>`
+  iconToday.innerHTML = `<img class="${getShadow(data.iconId)}" src="icons/${data.iconId}.svg" alt="${data.desc}"></img>`
   currentTemp.textContent = `${data.temp.toFixed(1)}°c`
   currentTempRange.textContent = `${data.tempMin.toFixed(1)}°c / ${data.tempMax.toFixed(1)}°c`
 
@@ -70,7 +70,7 @@ function displayWeek(data) {
       <li class="bg-green-200 flex flex-1 w-1/6 max-sm:w-36 flex-col items-center p-4 rounded-2xl my-shadow max-sm:text-sm"> 
         <span class="day font-semibold">${data.day[i]}</span>
         <p class="text-center capitalize-first">${data.desc[i]}</p>
-        <img class="${getShadow(data.iconId[i])} mt-auto" src="../src/icons/${data.iconId[i]}.svg" alt="${data.desc[i]}"></img>
+        <img class="${getShadow(data.iconId[i])} mt-auto" src="icons/${data.iconId[i]}.svg" alt="${data.desc[i]}"></img>
         <div class="temp w-full flex justify-center text-lg">
             <div class="temp-day font-semibold">${data.tempDay[i].toFixed()}°</div> &nbsp <span>/&nbsp${data.tempNight[i].toFixed()}°</span>
         </div>
