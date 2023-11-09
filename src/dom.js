@@ -67,7 +67,7 @@ function displayWeek(data) {
   weeklyContainer.innerHTML = ""
   for (let i = 0; i < 5; i++) {
     weeklyContainer.innerHTML += `
-      <li class="bg-green-200 flex flex-1 flex-col items-center p-4 rounded-2xl my-shadow max-sm:text-sm"> 
+      <li class="bg-green-200 flex flex-1 w-1/6 max-sm:w-36 flex-col items-center p-4 rounded-2xl my-shadow max-sm:text-sm"> 
         <span class="day font-semibold">${data.day[i]}</span>
         <p class="text-center capitalize-first">${data.desc[i]}</p>
         <img class="${getShadow(data.iconId[i])} mt-auto" src="../src/icons/${data.iconId[i]}.svg" alt="${data.desc[i]}"></img>

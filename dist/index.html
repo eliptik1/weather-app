@@ -5,31 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <style>
-		#loader {
-			border: 12px solid #f3f3f3;
-			border-radius: 50%;
-			border-top: 12px solid #444444;
-			width: 70px;
-			height: 70px;
-			animation: spin 1s linear infinite;
-		}
-		.center {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			margin: auto;
-		}
-		@keyframes spin {
-			100% {
-				transform: rotate(360deg);
-			}
-		}
-	</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body class="flex flex-col items-center bg-gradient-to-t from-stone-100 to-slate-400 bg-no-repeat bg-fixed">
+<body class="flex flex-col h-[100vh] items-center bg-gradient-to-t from-stone-100 to-slate-400 bg-no-repeat bg-fixed">
     <h1 class="nav1 text-center p-4 mt-4 w-full flex justify-center items-center font-['Nunito_Sans']">
         <img class="w-10" src="../src/icons/other_icons/logo.svg" alt=""></img>
         <p class="ml-2 text-3xl font-[800] text-slate-900 ">Weather</p>&nbsp;<span class="text-3xl font-semibold text-slate-800">App</span> 
@@ -41,7 +19,7 @@
     </nav>
     <div id="error-message" class="px-3 py-1 mt-4 rounded-full bg-red-200 hidden"></div>
     <main class="hidden m-6">
-        <div id="card-main" class="p-4 grid grid-cols-1 gap-6 ">
+        <div id="card-main" class="p-4 grid grid-cols-2 gap-6 max-sm:grid-cols-1">
             <div id="card-today" class="bg-blue-100 py-6 px-4 flex flex-col col-span-1 items-center rounded-2xl my-shadow">
                 <div id="city-info" class="flex flex-col items-center text-center">
                     <p id="city-name" class="text-3xl max-w-[350px] mb-2"></p>
@@ -67,6 +45,12 @@
             <ul id="weekly-container" class=" flex justify-start gap-4 col-span-2 max-sm:col-span-1 max-sm:gap-2 max-sm:overflow-x-auto p-3"></ul>
         </div>
     </main>
+    <footer class="mt-auto p-4 flex justify-center items-center gap-2">
+        <p class="text-lg"> Copyright © 2023 eliptik1</p>
+        <a href="https://github.com/eliptik1">
+            <i class="fa fa-github text-2xl text-slate-900"></i>
+        </a>
+    </footer>
     <script src="main.js"></script>
 </body>
 </html>
