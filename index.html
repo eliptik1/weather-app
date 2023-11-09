@@ -30,16 +30,16 @@
 	</style>
 </head>
 <body class="flex flex-col items-center bg-gradient-to-t from-stone-100 to-slate-400 bg-no-repeat bg-fixed">
-    <h1 class="nav1 text-center p-4 text-3xl text-blue-950 font-bold w-full">
-        WeatherApp
+    <h1 class="nav1 text-center p-4 mt-4 w-full flex justify-center items-center font-['Nunito_Sans']">
+        <img class="w-10" src="../src/icons/other_icons/logo.svg" alt=""></img>
+        <p class="ml-2 text-3xl font-[800] text-slate-900 ">Weather</p>&nbsp;<span class="text-3xl font-semibold text-slate-800">App</span> 
     </h1>
-    <div id="loader" class="center"></div>
-    <nav class="flex gap-2 items-center mt-3 ">
-        <input id="search-input" type="text" class="border-blue-950 border-2 bg-slate-300 p-1 text-lg rounded-2xl">
-        <svg class="fill-slate-500" xmlns="http://www.w3.org/2000/svg" width="36px" viewBox="0 -960 960 960"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
-        <button id="search-btn" class="bg-slate-200 text-lg p-1 hover:bg-slate-400 transition-colors">Search</button>
+    <div id="loader" class="center bg-"></div>
+    <nav class="flex gap-2 items-center mt-3 relative">
+        <input id="search-input" type="text" class="w-72 border-2 border-[rgba(0,0,0,0)] transition-colors focus:border-sky-900 focus:border-2 focus:outline-none bg-slate-300 p-1 px-4 text-lg rounded-full" placeholder="Search location">
+        <svg id="search-btn" class="fill-slate-500 absolute right-2 hover:fill-slate-950 transition-all cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="30px" viewBox="0 -960 960 960"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
     </nav>
-    <div id="error-message" class="px-3 py-1 bg-red-200 hidden"></div>
+    <div id="error-message" class="px-3 py-1 mt-4 rounded-full bg-red-200 hidden"></div>
     <main class="hidden m-6">
         <div id="card-main" class="w-fit p-4 grid grid-cols-2 gap-6 min-w-max">
             <div id="card-today" class="bg-blue-100 py-6 px-4 flex flex-col items-center rounded-2xl my-shadow">
@@ -51,18 +51,18 @@
                 <div id="middle" class="flex items-center gap-2 mt-auto">
                     <div id="icon-today" class="w-32"></div>
                     <div id="temperature" class="flex flex-col items-center m-4">
-                        <div id="current-temp" class="text-5xl"></div>
-                        <div id="current-temp-range"></div>
+                        <div id="current-temp" class="text-5xl font-semibold"></div>
+                        <div id="current-temp-range" class="text-lg"></div>
                     </div>
                 </div>
-                <p id="weather-description" class="font-semibold capitalize"></p>
+                <p id="weather-description" class="text-lg font-semibold capitalize-first"></p>
             </div>
             <ul id="card-details" class="bg-blue-200 px-4 py-6 flex flex-col items-start justify-between rounded-2xl my-shadow">
-                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/thermometer.svg"><p>Feels like:</p></div><span id="feels-like" class="font-semibold" ></span></li>
-                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/raindrop.svg"><p>Humidity:</p></div><span id="humidity" class="font-semibold"></span></li>
-                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/rain.svg"><p>Rain probability:</p></div><span id="rain" class="font-semibold"></span></li>
-                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/wind.svg"><p>Wind speed:</p></div><span id="wind" class="font-semibold"></span></li>
-                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/uv-index.svg"><p>UV index:</p></div><div id="uvi" class="font-semibold"></div></li>
+                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/thermometer.svg"><p>Feels like:</p></div><span id="feels-like" class="font-semibold text-lg" ></span></li>
+                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/raindrop.svg"><p>Humidity:</p></div><span id="humidity" class="font-semibold text-lg"></span></li>
+                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/rain.svg"><p>Rain probability:</p></div><span id="rain" class="font-semibold text-lg"></span></li>
+                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/wind.svg"><p>Wind speed:</p></div><span id="wind" class="font-semibold text-lg"></span></li>
+                <li class="w-full flex justify-between items-center"><div class="flex items-center gap-1"><img class="w-14" src="../src/icons/other_icons/uv-index.svg"><p>UV index:</p></div><div id="uvi" class="font-semibold text-lg"></div></li>
             </ul>
             <ul id="weekly-container" class="col-span-2 flex justify-center gap-4"></ul>
         </div>
