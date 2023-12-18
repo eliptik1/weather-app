@@ -28,4 +28,4 @@ Check out the live demo: [Weather-App Demo](https://eliptik1.github.io/weather-a
 
 ## License
 
-This project is open-source and available under the MIT License. 
+This project is open-source and available under the MIT License.
